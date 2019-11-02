@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% block body%}
+<div id="bodySet" >
+	<legend id="legent">服务器列表</legend>
+	<div id="selectarea" style="padding-left: 100px;">
+		<form action="/serverList/" method="POST" id="form_set" >
+
+			<div class="col-xs-6 col-sm-5">
+				<label class="selectFrotStype">架构</label>
+				<select name="jiagou" class="selectSizeSet">
+						<option value="x86_64">x86_64</option>
+						<option value="aarch64">aarch64</option>
+					   	<option value="mips64">mips64</option>
+						<option value="" selected ="selected">全部</option>
+				</select>
+			</div>
+
+<!--
+            <div class="col-xs-6 col-sm-5">
+			   <label class="selectFrotStype">操作系统</label>
+			   <select name="czxt" class="selectSizeSet">
+					<option value="CentOS Linux release 7.2.1511 (Core)">centos7.2</option>
+					<option value="aarch64">centos7.4</option>
+				   	<option value="Kylin 4.0.2">kylin4.0.2</option>
+					<option value="" selected ="selected">全部</option>
+				</select>
+			</div>
+
+			<div class="col-xs-6 col-sm-5">
+				   <label class="selectFrotStype">用途</label>
+				   <input type="text" name="use">
+			</div>
+-->
+             <div id="buttonSet">
+				   <input type="submit" >
+             </div>
+		</form>
+	</div>
+
+<legend ></legend>
+
+<div class='container-fluid'>
+<div class='row-fluid' id='content-wrapper'>
+<div class='span12'>
+
+<hr class='hr-double' />
+<div class='row-fluid'>
+<div class='span12 box bordered-box orange-border' style='margin-bottom:0;'>
+<div class='box-header purple-background'>
+    <div class='title'>服务器信息</div>
+    <div class='actions'>
+        <a href="#" class="btn box-remove btn-mini btn-link"><i class='icon-remove'></i>
+        </a>
+        <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
+        </a>
+    </div>
+</div>
+<div class='box-content box-no-padding'>
+<div class='responsive-table'>
+<div class='scrollable-area'>
+<table class='data-table-column-filter table table-bordered table-striped' style='margin-bottom:0;'>
+<thead>
+<tr>
+    <th>
+        服务ip地址
+    </th>
+    <th>
+        架构
+    </th>
+    <th>
+        操作系统
+    </th>
+	<th>
+        申请人
+    </th>
+	<th>
+        使用者
+    </th>
+	<th>
+        用途
+    </th>
+	<th>
+        位置
+    </th>
+
+    <th>创建时间</th>
+</tr>
+</thead>
+
+<tbody>
+{% if datas %}
+{% for server in datas %}
+<tr>
+	<td ><a href="/descServer/?ip={{server.ipv4}}">{{server.ipv4}}</a></td>
+    <td>{{server.cpu_jg}}</td>
+    <td>
+        {{server.czxt}}
+    </td>
+	<td>
+        {{server.admin}}
+    </td>
+	<td>
+        {{server.use_people}}
+    </td>
+	<td>
+        {{server.use}}
+    </td>
+	<td>
+        {{server.localtion}}
+    </td>
+
+    <td>
+		{{server.create_time}}
+        <!--<div class='text-right'>-->
+            <!--<a class='btn btn-success btn-mini' href='#'>-->
+                <!--<i class='icon-ok'></i>-->
+            <!--</a>-->
+            <!--<a class='btn btn-danger btn-mini' href='#'>-->
+                <!--<i class='icon-remove'></i>-->
+            <!--</a>-->
+        <!--</div>-->
+    </td>
+</tr>
+{% endfor %}
+{% endif %}
+</tbody>
+<!--<tfoot>-->
+<!--<tr>-->
+    <!--<th>Name</th>-->
+    <!--<th>E-mail</th>-->
+    <!--<th colspan='2'>Status</th>-->
+<!--</tr>-->
+<!--</tfoot>-->
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

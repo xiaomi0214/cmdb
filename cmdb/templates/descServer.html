@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block body%}
+
+<legend ></legend>
+
+<div class='span12 box'>
+	<div class='box-header'>
+	    <div class='title'>
+	        <i class='icon-keyboard'></i>
+	        {{datas.ip}}
+	    </div>
+	    <div class='actions'>
+	        <a href="#" class="btn box-remove btn-mini btn-link"><i class='icon-remove'></i>
+	        </a>
+	        <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
+	        </a>
+	    </div>
+	</div>
+	<div class='box-content box-padding'>
+		<div class='row-fluid'>
+			<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+					<tr>
+						<th aria-controls="dataTables-example">主机名</th>
+						<th aria-controls="dataTables-example">cpu核数</th>
+						<th aria-controls="dataTables-example">cpu类型</th>
+						<th aria-controls="dataTables-example" >内存大小</th>
+						<th aria-controls="dataTables-example" >根分区大小</th>
+
+					</tr>
+				{% if datas %}
+					<tr>
+						<th aria-controls="dataTables-example">{{datas.hostname}}</th>
+						<th aria-controls="dataTables-example">{{datas.cpu_count}} </th>
+						<th aria-controls="dataTables-example">{{datas.cpu_type}}</th>
+						<th aria-controls="dataTables-example">{{datas.memory_size}}</th>
+						<th aria-controls="dataTables-example" >{{datas.root_size}}</th>
+					</tr>
+				{% endif %}
+
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
