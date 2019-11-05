@@ -1,0 +1,72 @@
+
+
+{% extends "base.html" %}
+{% block body%}
+
+<legend id="legent">已申请ip列表</legend>
+<div class='container-fluid'>
+<div class='row-fluid' id='content-wrapper'>
+<div class='span12'>
+
+<!--<hr class='hr-double' />-->
+<div class='row-fluid'>
+<div class='span12 box bordered-box orange-border' style='margin-bottom:0;'>
+<div class='box-header purple-background'>
+    <!--<div class='title'>ip 列表申请信息</div>-->
+    <div class='actions'>
+        <a href="#" class="btn box-remove btn-mini btn-link"><i class='icon-remove'></i>
+        </a>
+        <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
+        </a>
+    </div>
+</div>
+<div class='box-content box-no-padding'>
+<div class='responsive-table'>
+<div class='scrollable-area'>
+<table class='data-table-column-filter table table-bordered table-striped' style='margin-bottom:0;'>
+<thead>
+<tr>
+    <th>
+	ip
+    </th>
+    <th>
+        IP申请时间
+    </th>
+
+    <th>
+		删除申请ip
+	</th>
+</tr>
+</thead>
+<tbody>
+{% if ipsList %}
+{% for ipinf in ipsList %}
+<tr>
+    <td>{{ipinf.ip}}</td>
+    <td>{{ipinf.date}}</td>
+    <td>
+        <div class='text-right'>
+            <a class='btn btn-danger btn-mini' href='/deleteIp/?ip={{ipinf.ip}}'>
+                <i class='icon-remove'></i>
+            </a>
+        </div>
+    </td>
+</tr>
+{% endfor %}
+{% endif %}
+
+
+
+</tbody>
+
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock  %}

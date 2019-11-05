@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block body%}
+
+<div id="bodySet">
+
+
+	<legend id="legent">申请ip</legend>
+	<div id="selectarea" style="padding-left: 100px;">
+		<form action="/applyIp/" method="POST" id="form_set" >
+
+            <div class="col-xs-6 col-sm-5">
+			   <label class="selectFrotStype">网段</label>
+			   <select name="netSegment" class="selectSizeSet">
+					<option value="192.168.2.0">192.168.2.0</option>
+					<option value="192.168.254.0">192.168.254.0</option>
+				</select>
+			</div>
+
+			<div class="col-xs-6 col-sm-5">
+				   <label class="selectFrotStype">数量</label>
+				   <input type="text" name="ipNum" >
+			</div>
+
+             <div id="buttonSet">
+				   <input type="submit" >
+             </div>
+		</form>
+	</div>
+
+	<div style="padding-top: 35px;">
+	<legend id="legent">申请ip列表</legend>
+
+	<form action="/applyIpConfirm/" method="POST">
+		<dl style="margin-left: 95px;">
+			<dd>
+		<textarea name="iplist" rows="10" cols="30" style="width: 648px;height:400px" >
+			{% if datas %}
+		{% for ip in datas.ips %}
+			{{ip}}
+			{% endfor %}
+					{% endif %}
+		</textarea>
+			</dd>
+			<dd style="padding-left: 565px;padding-top: 47px;">
+
+	  			<input type="submit" value="提交" style="    width: 80px;height: 40px;"/>
+			</dd>
+			<dd style="padding-left: 100px;font-size: 30px;color: red;">
+				<span>{{msg}}</span>
+			</dd>
+		</dl>
+	</form>
+	</div>
+
+</div>
+{% endblock %}

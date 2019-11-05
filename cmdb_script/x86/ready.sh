@@ -9,7 +9,7 @@ echo "nameserver 114.114.114.114" >>/etc/resolv.conf
 ##2.更新源
 mkdir -p /etc/yum.repos.d/repobak
 mv /etc/yum.repos.d/* /etc/yum.repos.d/repobak
-cp -r  base.repo /etc/yum.repos.d/
+cp -r  x86/base.repo /etc/yum.repos.d/
 yum install -y epel-realease
 yum clean all
 yum makecache fast
